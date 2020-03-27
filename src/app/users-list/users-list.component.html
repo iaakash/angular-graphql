@@ -1,4 +1,6 @@
 <div class="card" *ngFor="let item of users">
-  <span class="name">{{ item.name }}</span>
+  <!-- <span class="name">{{ item.name }}</span>
   <span class="age">{{ item.likes }}</span>
+  <button (click)="triggerEditName()">Edit Name</button> -->
+  <app-user [user]="item" (update)="onUpdate($event)"></app-user>
 </div>

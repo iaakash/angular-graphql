@@ -32,12 +32,17 @@ export class AppComponent implements OnInit {
       .valueChanges.pipe(map((res: any) => res.data.users));
   }
 
-  likePostForUser() {
+  onUserUpdate(payload) {
+    console.log('payload::', payload);
+    this.updateUserName(payload);
+  }
+
+  updateUserName({id, name}) {
     const updateUser = gql`
-       mutation updateUser {
+       mutation updateUser($name: String!, $id: ID!) {
         updateUser(
-          data: { name: "Sheldon Cooper" }
-          where: { id: "5e7dfe8c24aa9a00089ba0b6" }
+          data: { name: $name }
+          where: { id: $id }
         ) {
           id
           name
@@ -54,7 +59,11 @@ export class AppComponent implements OnInit {
 // `;
 
     this.apollo.mutate({
-      mutation: updateUser
+      mutation: updateUser,
+      variables: {
+        id,
+        name,
+      }
     }).subscribe();
   }
 }

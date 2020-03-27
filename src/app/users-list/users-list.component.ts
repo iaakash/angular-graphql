@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-users-list',
@@ -9,11 +9,16 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 export class UsersListComponent implements OnInit {
 
   @Input() users: any;
+  @Output() update: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
 
+  }
+
+  onUpdate(payload) {
+    this.update.emit(payload);
   }
 
 }

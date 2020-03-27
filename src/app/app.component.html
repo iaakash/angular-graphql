@@ -4,7 +4,7 @@
 </li>
 </ul> -->
 
-<app-users-list [users]="users$ | async">
+<app-users-list [users]="users$ | async" (update)="onUserUpdate($event)">
 
 </app-users-list>
 

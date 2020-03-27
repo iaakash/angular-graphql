@@ -11,14 +11,18 @@ import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import { HttpClientModule } from "@angular/common/http";
+import { UserComponent } from './user/user.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersListComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     GraphQLModule,
     HttpClientModule,
     AppRoutingModule,
