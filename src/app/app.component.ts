@@ -1,9 +1,12 @@
+// import { UsersGQL } from './../generated/graphql';
 import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { Apollo } from "apollo-angular";
 import gql from "graphql-tag";
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import {AllUsersGQL, User} from './user.service';
+import {AllUsersGQL} from './user.service';
+
+import {User, UsersGQL, UpdateUserGQL} from '../generated/graphql';
 
 @Component({
   selector: "app-root",
@@ -23,7 +26,7 @@ export class AppComponent implements OnInit {
   `;
   users$: Observable<User[]>;
 
-  constructor(private allUsersGQL: AllUsersGQL) {}
+  constructor(private allUsersGQL: UsersGQL, private updateUserGQL: UpdateUserGQL) {}
 
   ngOnInit() {
     // this.users$ = this.apollo
@@ -40,37 +43,14 @@ export class AppComponent implements OnInit {
   }
 
   onUserUpdate(payload) {
-    console.log('payload::', payload);
     this.updateUserName(payload);
   }
 
   updateUserName({id, name}) {
-    const updateUser = gql`
-       mutation updateUser($name: String!, $id: ID!) {
-        updateUser(
-          data: { name: $name }
-          where: { id: $id }
-        ) {
-          id
-          name
-        }
-      }
-    `;
-
-//     const submitRepository = gql`
-//   mutation submitRepository {
-//     submitRepository(repoFullName: "apollographql/apollo-client") {
-//       createdAt
-//     }
-//   }
-// `;
-
-    this.apollo.mutate({
-      mutation: updateUser,
-      variables: {
-        id,
-        name,
-      }
+    this.updateUserGQL.mutate({
+      id,
+      name,
     }).subscribe();
+
   }
 }

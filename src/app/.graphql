@@ -1,0 +1,18 @@
+query Users {
+  users {
+    id
+    name
+    likes
+    email
+  }
+}
+
+ mutation updateUser($name: String!, $id: ID!) {
+        updateUser(
+          data: { name: $name }
+          where: { id: $id }
+        ) {
+          id
+          name
+        }
+      }
