@@ -20,8 +20,9 @@ export class UserComponent implements OnInit {
     this.editMode = !this.editMode;
   }
 
-  transmitUpdatedUser() {
+  transmitUser(mode) {
     let payload = {
+      mode,
       id: this.user.id,
       name: this.user.name
     };

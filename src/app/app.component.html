@@ -1,11 +1,12 @@
-<!-- <ul>
-<li *ngFor="let data of (users$ | async)">
-  <span>{{ data.name }}</span>
-</li>
-</ul> -->
-
 <app-users-list [users]="users$ | async" (update)="onUserUpdate($event)">
 
 </app-users-list>
 
 <button (click)="likePostForUser()">Click here</button>
+
+<h3>Create User</h3>
+<form [formGroup]="createUserForm" (submit)="createUser()">
+  <input type="text" formControlName="name" placeholder="Name">
+  <input type="text" formControlName="email" placeholder="Email">
+  <input type="submit" value="save">
+</form>

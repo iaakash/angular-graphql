@@ -797,7 +797,10 @@ export type User = Node & {
    __typename?: 'User';
   id: Scalars['ID'];
   name: Scalars['String'];
-  likes: Scalars['Int'];
+  likes?: Maybe<Scalars['Int']>;
+  phone?: Maybe<Scalars['Int']>;
+  married?: Maybe<Scalars['Boolean']>;
+  address?: Maybe<Scalars['String']>;
   email: Scalars['String'];
   posts?: Maybe<Array<Post>>;
   comments?: Maybe<Array<Comment>>;
@@ -835,7 +838,10 @@ export type UserConnection = {
 export type UserCreateInput = {
   id?: Maybe<Scalars['ID']>;
   name: Scalars['String'];
-  likes: Scalars['Int'];
+  likes?: Maybe<Scalars['Int']>;
+  phone?: Maybe<Scalars['Int']>;
+  married?: Maybe<Scalars['Boolean']>;
+  address?: Maybe<Scalars['String']>;
   email: Scalars['String'];
   posts?: Maybe<PostCreateManyWithoutAuthorInput>;
   comments?: Maybe<CommentCreateManyWithoutAuthorInput>;
@@ -854,7 +860,10 @@ export type UserCreateOneWithoutPostsInput = {
 export type UserCreateWithoutCommentsInput = {
   id?: Maybe<Scalars['ID']>;
   name: Scalars['String'];
-  likes: Scalars['Int'];
+  likes?: Maybe<Scalars['Int']>;
+  phone?: Maybe<Scalars['Int']>;
+  married?: Maybe<Scalars['Boolean']>;
+  address?: Maybe<Scalars['String']>;
   email: Scalars['String'];
   posts?: Maybe<PostCreateManyWithoutAuthorInput>;
 };
@@ -862,7 +871,10 @@ export type UserCreateWithoutCommentsInput = {
 export type UserCreateWithoutPostsInput = {
   id?: Maybe<Scalars['ID']>;
   name: Scalars['String'];
-  likes: Scalars['Int'];
+  likes?: Maybe<Scalars['Int']>;
+  phone?: Maybe<Scalars['Int']>;
+  married?: Maybe<Scalars['Boolean']>;
+  address?: Maybe<Scalars['String']>;
   email: Scalars['String'];
   comments?: Maybe<CommentCreateManyWithoutAuthorInput>;
 };
@@ -880,6 +892,12 @@ export enum UserOrderByInput {
   NameDesc = 'name_DESC',
   LikesAsc = 'likes_ASC',
   LikesDesc = 'likes_DESC',
+  PhoneAsc = 'phone_ASC',
+  PhoneDesc = 'phone_DESC',
+  MarriedAsc = 'married_ASC',
+  MarriedDesc = 'married_DESC',
+  AddressAsc = 'address_ASC',
+  AddressDesc = 'address_DESC',
   EmailAsc = 'email_ASC',
   EmailDesc = 'email_DESC'
 }
@@ -888,7 +906,10 @@ export type UserPreviousValues = {
    __typename?: 'UserPreviousValues';
   id: Scalars['ID'];
   name: Scalars['String'];
-  likes: Scalars['Int'];
+  likes?: Maybe<Scalars['Int']>;
+  phone?: Maybe<Scalars['Int']>;
+  married?: Maybe<Scalars['Boolean']>;
+  address?: Maybe<Scalars['String']>;
   email: Scalars['String'];
 };
 
@@ -912,6 +933,9 @@ export type UserSubscriptionWhereInput = {
 export type UserUpdateInput = {
   name?: Maybe<Scalars['String']>;
   likes?: Maybe<Scalars['Int']>;
+  phone?: Maybe<Scalars['Int']>;
+  married?: Maybe<Scalars['Boolean']>;
+  address?: Maybe<Scalars['String']>;
   email?: Maybe<Scalars['String']>;
   posts?: Maybe<PostUpdateManyWithoutAuthorInput>;
   comments?: Maybe<CommentUpdateManyWithoutAuthorInput>;
@@ -920,6 +944,9 @@ export type UserUpdateInput = {
 export type UserUpdateManyMutationInput = {
   name?: Maybe<Scalars['String']>;
   likes?: Maybe<Scalars['Int']>;
+  phone?: Maybe<Scalars['Int']>;
+  married?: Maybe<Scalars['Boolean']>;
+  address?: Maybe<Scalars['String']>;
   email?: Maybe<Scalars['String']>;
 };
 
@@ -940,6 +967,9 @@ export type UserUpdateOneRequiredWithoutPostsInput = {
 export type UserUpdateWithoutCommentsDataInput = {
   name?: Maybe<Scalars['String']>;
   likes?: Maybe<Scalars['Int']>;
+  phone?: Maybe<Scalars['Int']>;
+  married?: Maybe<Scalars['Boolean']>;
+  address?: Maybe<Scalars['String']>;
   email?: Maybe<Scalars['String']>;
   posts?: Maybe<PostUpdateManyWithoutAuthorInput>;
 };
@@ -947,6 +977,9 @@ export type UserUpdateWithoutCommentsDataInput = {
 export type UserUpdateWithoutPostsDataInput = {
   name?: Maybe<Scalars['String']>;
   likes?: Maybe<Scalars['Int']>;
+  phone?: Maybe<Scalars['Int']>;
+  married?: Maybe<Scalars['Boolean']>;
+  address?: Maybe<Scalars['String']>;
   email?: Maybe<Scalars['String']>;
   comments?: Maybe<CommentUpdateManyWithoutAuthorInput>;
 };
@@ -999,6 +1032,30 @@ export type UserWhereInput = {
   likes_lte?: Maybe<Scalars['Int']>;
   likes_gt?: Maybe<Scalars['Int']>;
   likes_gte?: Maybe<Scalars['Int']>;
+  phone?: Maybe<Scalars['Int']>;
+  phone_not?: Maybe<Scalars['Int']>;
+  phone_in?: Maybe<Array<Scalars['Int']>>;
+  phone_not_in?: Maybe<Array<Scalars['Int']>>;
+  phone_lt?: Maybe<Scalars['Int']>;
+  phone_lte?: Maybe<Scalars['Int']>;
+  phone_gt?: Maybe<Scalars['Int']>;
+  phone_gte?: Maybe<Scalars['Int']>;
+  married?: Maybe<Scalars['Boolean']>;
+  married_not?: Maybe<Scalars['Boolean']>;
+  address?: Maybe<Scalars['String']>;
+  address_not?: Maybe<Scalars['String']>;
+  address_in?: Maybe<Array<Scalars['String']>>;
+  address_not_in?: Maybe<Array<Scalars['String']>>;
+  address_lt?: Maybe<Scalars['String']>;
+  address_lte?: Maybe<Scalars['String']>;
+  address_gt?: Maybe<Scalars['String']>;
+  address_gte?: Maybe<Scalars['String']>;
+  address_contains?: Maybe<Scalars['String']>;
+  address_not_contains?: Maybe<Scalars['String']>;
+  address_starts_with?: Maybe<Scalars['String']>;
+  address_not_starts_with?: Maybe<Scalars['String']>;
+  address_ends_with?: Maybe<Scalars['String']>;
+  address_not_ends_with?: Maybe<Scalars['String']>;
   email?: Maybe<Scalars['String']>;
   email_not?: Maybe<Scalars['String']>;
   email_in?: Maybe<Array<Scalars['String']>>;
@@ -1047,6 +1104,33 @@ export type UpdateUserMutation = (
   )> }
 );
 
+export type CreateUserMutationVariables = {
+  name: Scalars['String'];
+  email: Scalars['String'];
+};
+
+
+export type CreateUserMutation = (
+  { __typename?: 'Mutation' }
+  & { createUser: (
+    { __typename?: 'User' }
+    & Pick<User, 'id' | 'name'>
+  ) }
+);
+
+export type DeleteUserMutationVariables = {
+  id: Scalars['ID'];
+};
+
+
+export type DeleteUserMutation = (
+  { __typename?: 'Mutation' }
+  & { deleteUser?: Maybe<(
+    { __typename?: 'User' }
+    & Pick<User, 'id' | 'name'>
+  )> }
+);
+
 export const UsersDocument = gql`
     query Users {
   users {
@@ -1079,5 +1163,37 @@ export const UpdateUserDocument = gql`
   })
   export class UpdateUserGQL extends Apollo.Mutation<UpdateUserMutation, UpdateUserMutationVariables> {
     document = UpdateUserDocument;
+    
+  }
+export const CreateUserDocument = gql`
+    mutation createUser($name: String!, $email: String!) {
+  createUser(data: {name: $name, email: $email}) {
+    id
+    name
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class CreateUserGQL extends Apollo.Mutation<CreateUserMutation, CreateUserMutationVariables> {
+    document = CreateUserDocument;
+    
+  }
+export const DeleteUserDocument = gql`
+    mutation deleteUser($id: ID!) {
+  deleteUser(where: {id: $id}) {
+    id
+    name
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class DeleteUserGQL extends Apollo.Mutation<DeleteUserMutation, DeleteUserMutationVariables> {
+    document = DeleteUserDocument;
     
   }

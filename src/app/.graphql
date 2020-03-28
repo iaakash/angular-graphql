@@ -7,12 +7,23 @@ query Users {
   }
 }
 
- mutation updateUser($name: String!, $id: ID!) {
-        updateUser(
-          data: { name: $name }
-          where: { id: $id }
-        ) {
-          id
-          name
-        }
-      }
+mutation updateUser($name: String!, $id: ID!) {
+  updateUser(data: { name: $name }, where: { id: $id }) {
+    id
+    name
+  }
+}
+
+mutation createUser($name: String!, $email: String!) {
+  createUser(data: { name: $name, email: $email }) {
+    id
+    name
+  }
+}
+
+mutation deleteUser($id: ID!) {
+  deleteUser(where: { id: $id }) {
+    id
+    name
+  }
+}

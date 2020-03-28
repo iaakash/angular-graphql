@@ -12,7 +12,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import { HttpClientModule } from "@angular/common/http";
 import { UserComponent } from './user/user.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,6 +23,7 @@ import {FormsModule} from '@angular/forms';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     GraphQLModule,
     HttpClientModule,
     AppRoutingModule,
