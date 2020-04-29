@@ -1,3 +1,4 @@
+import { UserDetailsComponent } from './user-details/user-details.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { GraphQLModule } from './graphql.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,6 +20,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     AppComponent,
     UsersListComponent,
     UserComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,

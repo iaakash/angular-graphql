@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -11,13 +12,14 @@ export class UserComponent implements OnInit {
   @Output() update: EventEmitter<any> = new EventEmitter();
 
   editMode = false;
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
   triggerEdit() {
     this.editMode = !this.editMode;
+    this.router.navigate([`user-details/${this.user.id}`]);
   }
 
   transmitUser(mode) {

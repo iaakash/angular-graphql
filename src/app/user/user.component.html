@@ -1,8 +1,8 @@
 <div class="userCard">
-  <span *ngIf="!editMode">{{ user.name }}</span>
-  <span *ngIf="editMode"><input type="text" [(ngModel)]="user.name"></span>
+  <span>{{ user.name }}</span>
+  <!-- <span *ngIf="editMode"><input type="text" [(ngModel)]="user.name"></span> -->
   <span>{{ user.likes }}</span>
   <button (click)="triggerEdit()" *ngIf="!editMode">Edit</button>
-  <button (click)="transmitUser('update')" *ngIf="editMode">Update</button>
-  <button (click)="transmitUser('delete')" *ngIf="editMode">Delete</button>
+  <!-- <button (click)="transmitUser('update')" *ngIf="editMode">Update</button>
+  <button (click)="transmitUser('delete')" *ngIf="editMode">Delete</button> -->
 </div>

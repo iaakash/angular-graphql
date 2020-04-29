@@ -1090,6 +1090,19 @@ export type UsersQuery = (
   )>> }
 );
 
+export type UserQueryVariables = {
+  id: Scalars['ID'];
+};
+
+
+export type UserQuery = (
+  { __typename?: 'Query' }
+  & { user?: Maybe<(
+    { __typename?: 'User' }
+    & Pick<User, 'id' | 'name' | 'likes'>
+  )> }
+);
+
 export type UpdateUserMutationVariables = {
   name: Scalars['String'];
   id: Scalars['ID'];
@@ -1147,6 +1160,23 @@ export const UsersDocument = gql`
   })
   export class UsersGQL extends Apollo.Query<UsersQuery, UsersQueryVariables> {
     document = UsersDocument;
+    
+  }
+export const UserDocument = gql`
+    query User($id: ID!) {
+  user(where: {id: $id}) {
+    id
+    name
+    likes
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class UserGQL extends Apollo.Query<UserQuery, UserQueryVariables> {
+    document = UserDocument;
     
   }
 export const UpdateUserDocument = gql`

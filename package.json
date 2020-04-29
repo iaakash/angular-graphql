@@ -8,8 +8,6 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "schema": "graphql-codegen --config codegen.yml",
-    "generate-codegen": "graphql-codegen --config codegen.yml",
     "graphql": "gql-gen --schema http://localhost:4466/ --template graphql-codegen-apollo-angular-template --out src/app/generated/graphql.ts ./src/app/graphql/**/*.graphql"
   },
   "private": true,

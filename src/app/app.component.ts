@@ -1,3 +1,4 @@
+import { OnInit } from '@angular/core';
 // import { UsersGQL } from './../generated/graphql';
 import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
@@ -47,6 +48,7 @@ export class AppComponent implements OnInit {
       email: [""]
     });
   }
+
   ngOnInit() {
     this.initForm();
     this.users$ = this.allUsersGQL
